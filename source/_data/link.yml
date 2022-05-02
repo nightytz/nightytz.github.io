@@ -1,0 +1,21 @@
+﻿class:
+  class_name: 小伙伴
+  link_list:
+    1:
+      name: nightの博客
+      link: https://nightytz.github.io/
+      avatar: https://cdn.jsdelivr.net/gh/zhaoze-jpg/Xianqi@main/img/avatar.jpg
+      descr: 既然选择了远方,便只顾风雨兼程
+      siteshot: https://cdn.jsdelivr.net/gh/zhaoze-jpg/Xianqi@main/img/0.jpg
+    # 2:
+    #   name: 张君韵の博客
+    #   link: https://zsf9852.github.io/
+    #   avatar: https://s1.ax1x.com/2020/05/17/YRWsYT.png
+    #   descr: 吃饱饭干大活
+    #   siteshot: https://cdn.jsdelivr.net/gh/zhaoze-jpg/xianqi-img@main/img/1.webp
+    # 3:
+    #   name: XHの博客
+    #   link: http://xhdemohtml.top/
+    #   avatar: http://xhdemohtml.top/img/about/tou.png
+    #   descr: woshinibb
+    #   siteshot: https://z3.ax1x.com/2021/11/17/IhOiqA.jpg
