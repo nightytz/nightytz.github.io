@@ -1,0 +1,215 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>一些js面试题目2 | night</title><meta name="author" content="night"><meta name="copyright" content="night"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="javaScript柯里化原本接收多个参数，可以分步接收，它可以做到参数复用，保存上一次计算的值。实现原理是闭包。 Promise**Promise是异步编程的一种解决方案。从语法上他是一个构造函数。从功能上他封装一个异步操作：比如fs文件操作，数据库，ajax，定时器。比起传统解决方案-回调函数和时间-更加强大，可以解决回调地狱（回调地狱，外层回调的异步执行结果是内部嵌套回调函数的执行条件）。他">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一些js面试题目2">
+<meta property="og:url" content="http://example.com/2023/02/25/%E4%B8%80%E4%BA%9Bjs%E9%9D%A2%E8%AF%95%E9%A2%982/index.html">
+<meta property="og:site_name" content="night">
+<meta property="og:description" content="javaScript柯里化原本接收多个参数，可以分步接收，它可以做到参数复用，保存上一次计算的值。实现原理是闭包。 Promise**Promise是异步编程的一种解决方案。从语法上他是一个构造函数。从功能上他封装一个异步操作：比如fs文件操作，数据库，ajax，定时器。比起传统解决方案-回调函数和时间-更加强大，可以解决回调地狱（回调地狱，外层回调的异步执行结果是内部嵌套回调函数的执行条件）。他">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s3.bmp.ovh/imgs/2023/02/25/a5bd1d09138d0f1f.jpg">
+<meta property="article:published_time" content="2023-02-24T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-02-27T06:07:21.011Z">
+<meta property="article:author" content="night">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s3.bmp.ovh/imgs/2023/02/25/a5bd1d09138d0f1f.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2023/02/25/%E4%B8%80%E4%BA%9Bjs%E9%9D%A2%E8%AF%95%E9%A2%982/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '一些js面试题目2',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-02-27 14:07:21'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/universe.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-clock/lib/clock.min.css" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s3.bmp.ovh/imgs/2023/02/25/daa66ebe911182b3.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-fish"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/moyu/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></li><li><a class="site-page child" href="/tools/"><i class="fa-fw fas fa-tools"></i><span> 工具</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/lanqiao/"><i class="fa-fw fas fa-folder-open"></i><span> 随笔</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s3.bmp.ovh/imgs/2023/02/25/a5bd1d09138d0f1f.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="night"><span class="site-name">night</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-fish"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/moyu/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></li><li><a class="site-page child" href="/tools/"><i class="fa-fw fas fa-tools"></i><span> 工具</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/lanqiao/"><i class="fa-fw fas fa-folder-open"></i><span> 随笔</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">一些js面试题目2</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-02-24T16:00:00.000Z" title="发表于 2023-02-25 00:00:00">2023-02-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-02-27T06:07:21.011Z" title="更新于 2023-02-27 14:07:21">2023-02-27</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="一些js面试题目2"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="javaScript"><a href="#javaScript" class="headerlink" title="javaScript"></a>javaScript</h2><h3 id="柯里化"><a href="#柯里化" class="headerlink" title="柯里化"></a>柯里化</h3><p>原本接收多个参数，可以分步接收，它可以做到参数复用，保存上一次计算的值。实现原理是闭包。</p>
+<h3 id="Promise"><a href="#Promise" class="headerlink" title="Promise**"></a>Promise**</h3><p>Promise是异步编程的一种解决方案。<br>从语法上他是一个构造函数。<br>从功能上他封装一个异步操作：比如fs文件操作，数据库，ajax，定时器。比起传统解决方案-回调函数和时间-更加强大，可以解决回调地狱（回调地狱，外层回调的异步执行结果是内部嵌套回调函数的执行条件）。<br>他有三种状态，fulfilld（成功），rejected（失败），pending（准备）。<br><strong>基本用法:</strong> Promise构造函数接受哟个函数作为参数，这个函数的两个参数分别是resolve和reject，由JavaScript引擎提供，无需自己部署。<br>resolve函数的作用是将promise对象的状态从pending变为fulfilld，在异步操作成功时执行，并将异步操作的结果作为参数传递出去；reject函数将状态从pending变为rejected，在异步操作失败是调用，并将代表错误的参数传递出去。(函数并不会终止代码执行)<br>promise实例生成后，可以调用then指定的resolved状态和rejected状态的函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> promise=<span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">res,reg</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="comment">// some code</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="comment">/*异步操作成功*/</span>)&#123;</span><br><span class="line">        <span class="title function_">resolve</span>(value)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="title function_">reject</span>(error)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// then的第一个参数时成功的回调 第二个时失败的回调（可以不写）</span></span><br><span class="line">promise.<span class="title function_">then</span>(<span class="function">(<span class="params">res</span>)=&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;,<span class="function">(<span class="params">reg</span>)=&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>resolve函数的参数除了正常的值之外，还可能是另一个promise实例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> p1=<span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">res,reg</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">()=&gt;</span><span class="title function_">rejected</span>(<span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&#x27;fail&#x27;</span>)),<span class="number">3000</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">var</span> p2=<span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">res,reg</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="title function_">setTime</span>(<span class="function">()=&gt;</span><span class="title function_">resolve</span>(p1))</span><br><span class="line">&#125;,<span class="number">1000</span>)</span><br><span class="line"></span><br><span class="line">p2</span><br><span class="line">    .<span class="title function_">then</span>(<span class="function"><span class="params">result</span>=&gt;</span><span class="variable language_">console</span>.<span class="title function_">log</span>(result))</span><br><span class="line">    .<span class="title function_">catch</span>(<span class="function"><span class="params">error</span>=&gt;</span>comsole.<span class="title function_">log</span>(error))</span><br><span class="line"></span><br><span class="line"><span class="comment">// Error:fail</span></span><br></pre></td></tr></table></figure>
+<p>上面的代码中，p1是一个promise，3秒后状态变为失败，由于p2返回的是另一个promise，导致promise状态无效，由p1的状态决定发p2的状态，所以then语句编程针对p1的，2秒后触发catch<br><strong>then():</strong> then()方法返回一个新的promise实例，所以可以链式调用。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">promise.<span class="title function_">then</span>(<span class="function">(<span class="params">val</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> val</span><br><span class="line">&#125;).<span class="title function_">then</span>(<span class="function">(<span class="params">val</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>上面的代码使用then一次指定两个回调，第一个函数完成后，回家接轨作为参数传入第二个函数，此时如果前一个回调函数返回一个promise对象（及还有异步操作），则后一个回调就会等待改promise实例状态发生改变在被调用。<br><strong>catch():</strong> catch方法是.then(null,rejected)的别名，用于指定发生错误的回调函数<br>下面是一个例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> promise=<span class="keyword">new</span> <span class="title class_">Promise</span>((res,<span class="function"><span class="params">reg</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&#x27;error&#x27;</span>)</span><br><span class="line">&#125;)).<span class="title function_">catch</span>(<span class="function">(<span class="params">error</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(error)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 等同于</span></span><br><span class="line"><span class="comment">// 写法一</span></span><br><span class="line"><span class="keyword">var</span> promise=<span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">res,reg</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&#x27;error&#x27;</span>)</span><br><span class="line">    &#125;<span class="keyword">catch</span>(e)&#123;</span><br><span class="line">        <span class="title function_">reg</span>(e)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">promise.<span class="title function_">catch</span>(<span class="function"><span class="params">e</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(e);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 写法二</span></span><br><span class="line"><span class="keyword">var</span> promise=<span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">res,reg</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="title function_">reg</span>(<span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&#x27;error&#x27;</span>))</span><br><span class="line">&#125;).<span class="title function_">catch</span>(<span class="function"><span class="params">e</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(e);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>比较上面两种写法，reject方法等同于抛出错误，如果在抛出之前状态已经变成成功，在抛出错误是无效的，他的状态已经凝固了。<br>对象的错误会一直向后传递，直到被捕获，一般来说不要在then中定义失败回调，要用catch方法。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line">promise</span><br><span class="line">    .<span class="title function_">then</span>(<span class="function"><span class="params">data</span>=&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;,<span class="function"><span class="params">err</span>=&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// good</span></span><br><span class="line">promise</span><br><span class="line">    .<span class="title function_">then</span>(<span class="function"><span class="params">data</span>=&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line">    .<span class="title function_">catch</span>(<span class="function"><span class="params">err</span>=&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+<p>根传统的try&#x2F;catch代码块不同，如果没有使用catch捕捉错误，promise对象抛出的错误不会传递到代码外层，不会终止进程。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">var</span> someAs=<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">res,reg</span>)=&gt;</span>&#123;</span><br><span class="line">            <span class="title function_">res</span>(x+<span class="number">2</span>)</span><br><span class="line">            </span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"><span class="title function_">someAs</span>().<span class="title function_">then</span>(<span class="function">()=&gt;</span>&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;hello&#x27;</span>);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;123&#x27;</span>)</span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">()=&gt;</span>&#123;</span><br><span class="line">    <span class="title function_">console</span>(<span class="string">&#x27;999&#x27;</span>)</span><br><span class="line">&#125;,<span class="number">1000</span>)</span><br></pre></td></tr></table></figure>
+<p>上述代码，someAs函数产生的Promise对象，内部有语法错误，会有报错信息，但不会终止进程，123,999依然会打印</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">night</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2023/02/25/%E4%B8%80%E4%BA%9Bjs%E9%9D%A2%E8%AF%95%E9%A2%982/">http://example.com/2023/02/25/%E4%B8%80%E4%BA%9Bjs%E9%9D%A2%E8%AF%95%E9%A2%982/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">night</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://s3.bmp.ovh/imgs/2023/02/25/a5bd1d09138d0f1f.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/02/25/%E4%B8%80%E4%BA%9Bjs%E9%9D%A2%E8%AF%95%E9%A2%98/" title="一些js面试题目"><img class="cover" src="https://s3.bmp.ovh/imgs/2023/02/25/a5bd1d09138d0f1f.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">一些js面试题目</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://s3.bmp.ovh/imgs/2023/02/25/daa66ebe911182b3.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">night</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div><div class="xpand" style="height:200px;"></div></div><canvas class="illo" width="800" height="800" style="max-width: 200px; max-height: 200px; touch-action: none; width: 640px; height: 640px;"></canvas><script src="https://fastly.jsdelivr.net/gh/xiaopengand/blogCdn@latest/xzxr/twopeople1.js"></script><script src="https://fastly.jsdelivr.net/gh/xiaopengand/blogCdn@latest/xzxr/zdog.dist.js"></script><script id="rendered-js" src="https://fastly.jsdelivr.net/gh/xiaopengand/blogCdn@latest/xzxr/twopeople.js"></script><style>.card-widget.card-announcement {
+margin: 0;
+align-items: center;
+justify-content: center;
+text-align: center;
+}
+canvas {
+display: block;
+margin: 0 auto;
+cursor: move;
+}</style><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#javaScript"><span class="toc-number">1.</span> <span class="toc-text">javaScript</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%AF%E9%87%8C%E5%8C%96"><span class="toc-number">1.1.</span> <span class="toc-text">柯里化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Promise"><span class="toc-number">1.2.</span> <span class="toc-text">Promise**</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/02/25/%E4%B8%80%E4%BA%9Bjs%E9%9D%A2%E8%AF%95%E9%A2%982/" title="一些js面试题目2"><img src="https://s3.bmp.ovh/imgs/2023/02/25/a5bd1d09138d0f1f.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="一些js面试题目2"/></a><div class="content"><a class="title" href="/2023/02/25/%E4%B8%80%E4%BA%9Bjs%E9%9D%A2%E8%AF%95%E9%A2%982/" title="一些js面试题目2">一些js面试题目2</a><time datetime="2023-02-24T16:00:00.000Z" title="发表于 2023-02-25 00:00:00">2023-02-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/02/25/%E4%B8%80%E4%BA%9Bjs%E9%9D%A2%E8%AF%95%E9%A2%98/" title="一些js面试题目"><img src="https://s3.bmp.ovh/imgs/2023/02/25/a5bd1d09138d0f1f.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="一些js面试题目"/></a><div class="content"><a class="title" href="/2023/02/25/%E4%B8%80%E4%BA%9Bjs%E9%9D%A2%E8%AF%95%E9%A2%98/" title="一些js面试题目">一些js面试题目</a><time datetime="2023-02-24T16:00:00.000Z" title="发表于 2023-02-25 00:00:00">2023-02-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/02/24/css%E7%BE%8E%E5%8C%96%E6%95%88%E6%9E%9C/" title="好看的css效果"><img src="https://s3.bmp.ovh/imgs/2023/02/25/6b4e34397e2a568d.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="好看的css效果"/></a><div class="content"><a class="title" href="/2023/02/24/css%E7%BE%8E%E5%8C%96%E6%95%88%E6%9E%9C/" title="好看的css效果">好看的css效果</a><time datetime="2023-02-23T16:00:00.000Z" title="发表于 2023-02-24 00:00:00">2023-02-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/02/23/hello-world/" title="Hello World"><img src="https://s3.bmp.ovh/imgs/2023/02/25/fdb58d837b9bb1a4.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/2023/02/23/hello-world/" title="Hello World">Hello World</a><time datetime="2023-02-22T16:00:00.000Z" title="发表于 2023-02-23 00:00:00">2023-02-23</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://s3.bmp.ovh/imgs/2023/02/25/a5bd1d09138d0f1f.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By night</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><div class="aplayer no-destroy" data-id="5429584437" data-server="netease" data-type="playlist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="false" muted></div><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_clock_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src="https://npm.elemecdn.com/hexo-butterfly-clock/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_injector_config();
+  }
+  </script><script src="https://pv.sohu.com/cityjson?ie=utf-8"></script><script data-pjax src="https://npm.elemecdn.com/hexo-butterfly-clock/lib/clock.min.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
